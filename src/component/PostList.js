@@ -5,11 +5,13 @@ import { fetchPost } from '../action/index'
 
 
 const PostList = (props) => {
-    const { sendPostRequest } = props;
+    const { sendPostRequest, newData } = props;
 
     useEffect(() => {
         sendPostRequest();
     }, [])
+
+    console.log("aa", sendPostRequest)
 
     return (
         <div>
@@ -24,6 +26,13 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        newData: state
+    }
+}
 
 
-export default connect(null, mapDispatchToProps)(PostList)
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)
